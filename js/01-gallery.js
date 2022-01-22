@@ -23,7 +23,15 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup);
 galleryContainer.addEventListener('click', (event) => {
     event.preventDefault();
     
-    basicLightbox.create(
-    `<img src="${event.target.dataset.source}">`)
-    .show();
+    const modal = basicLightbox.create(`<img src="${event.target.dataset.source}">`);
+    modal.show();
+
+    if(modal.visible()) {
+        window.addEventListener(`keydown`, (event) => {
+            console.log(event);
+            if(event.code === `Escape`) {
+                modal.close();
+            };
+        });
+    };
 });
