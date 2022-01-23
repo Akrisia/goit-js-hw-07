@@ -23,7 +23,7 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup);
 galleryContainer.addEventListener('click', (event) => {
     event.preventDefault();
     
-    const modal = basicLightbox.create(`<img src="${event.target.dataset.source}">`);
+    const modal = basicLightbox.create(`<img src="${event.target.dataset.source}" alt="${event.target.alt}">`);
     modal.show();
 
     if(modal.visible()) {
